@@ -19,4 +19,3 @@ func main() {
 	Reversal(&srt)
 	fmt.Println("Reverse phrase", srt)
 }
-
