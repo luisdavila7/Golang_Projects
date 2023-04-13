@@ -14,7 +14,7 @@ func createStack() *Stack {
 	return stack
 }
 
-func push(stack *Stack, value int) {
+func queueLeft(stack *Stack, value int) {
 	if stack.top == MAX_SIZE-1 {
 		fmt.Println("Error: Stack is full!")
 		return
@@ -23,7 +23,16 @@ func push(stack *Stack, value int) {
 	stack.arr[stack.top] = value
 }
 
-func pop(stack *Stack) int {
+func queueRight(stack *Stack, value int) {
+	if stack.top == MAX_SIZE-1 {
+		fmt.Println("Error: Stack is full!")
+		return
+	}
+	stack.top++
+	stack.arr[stack.top] = value
+}
+
+func deQueue(stack *Stack) int {
 	if stack.top == -1 {
 		fmt.Println("Error: Stack is empty!")
 		return -1
@@ -36,13 +45,13 @@ func pop(stack *Stack) int {
 func main() {
 	stack := createStack()
 
-	push(stack, 10)
-	push(stack, 20)
-	push(stack, 30)
-	push(stack, 40)
+	queueLeft(stack, 10)
+	queueRight(stack, 20)
+	queueRight(stack, 30)
+	queueLeft(stack, 40)
 
-	fmt.Println(pop(stack))
-	fmt.Println(pop(stack))
-	fmt.Println(pop(stack))
+	fmt.Println(deQueue(stack))
+	fmt.Println(deQueue(stack))
+	fmt.Println(deQueue(stack))
 	fmt.Println(stack)
 }
